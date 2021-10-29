@@ -70,33 +70,3 @@ def monte_carlo_walk_analysis(max_blocks, repetitions = 10000):
         all_walks[length] = walks
         
     return all_walks
-
-#------------# Test generate_walk #------------#
-
-print(generate_walk())
-print(generate_walk(5))
-print(generate_walk(10))
-print(generate_walk(15))
-print(generate_walk(0))
-print(generate_walk(-1))
-print(generate_walk(-15))
-
-#------------# Test decode_walk #------------#
-print(decode_walk(['N']))
-print(decode_walk(['W', 'S', 'W', 'N', 'N']))
-print(decode_walk(['S', 'N', 'W', 'N', 'N', 'N', 'E', 'S', 'E', 'S']))
-print(decode_walk(['S', 'S', 'W', 'N', 'E', 'W', 'W', 'S', 'S', 'W', 'W', 'N', 'S', 'S', 'E']))
-print(decode_walk([]))
-
-#------------# Test distance_manhattan #------------#
-print(distance_manhattan((0, 0), (0, 1)))
-print(distance_manhattan((0, 0), (-2, 1)))
-print(distance_manhattan((0, 0), (1, 1)))
-print(distance_manhattan((0, 0), (-3, -4)))
-print(distance_manhattan((0, 0), (0, 0)))
-
-#------------# Test monte_carlo_walk_analysis #------------#
-print(monte_carlo_walk_analysis(1, 1))
-print(monte_carlo_walk_analysis(3, 1))
-print(monte_carlo_walk_analysis(1, 3))
-print(monte_carlo_walk_analysis(3, 5))
