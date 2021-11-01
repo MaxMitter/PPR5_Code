@@ -1,13 +1,21 @@
 import turtle
+import matplotlib.pyplot as plt
 import matplotlib.colors as col
 from HW1 import basic_library
 
+def get_random_color(index, name='hsv'):
+    return plt.cm.get_cmap(name, index)
 
-def visualizeWalk(t, walk, stepSize = 15):
-    t.color(col.hex2color("#ff0000"))
-    rad = 5
+
+def visualizeWalk(t, walk, color, stepSize = 15, startPos = (0, 0)):
+    t.pensize(5)
+    t.color(col.to_hex(color))
+    rad = 8
     t.hideturtle()
-    t.speed(2)
+    t.penup()
+    t.setpos(startPos)
+    t.pendown()
+    #t.speed(2)
     print(walk)
     for w in walk:
         if w == "N":
@@ -30,8 +38,14 @@ def visualizeWalk(t, walk, stepSize = 15):
 
 
 tur = turtle.Turtle()
-walk = basic_library.generate_walk(4)
-visualizeWalk(tur, walk, 50)
+walk_dict = basic_library.monte_carlo_walk_analysis(5, 10)
+
+cmap = get_random_color(10)
+
+for i in range(10):
+    startPos = (-6 * i, -6 * i)
+    walk = basic_library.generate_walk(5)
+    visualizeWalk(tur, walk, cmap(i), 50, startPos)
 
 wn = turtle.Screen()
 from sys import platform
